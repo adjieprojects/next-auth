@@ -31,9 +31,9 @@ export const decrypt = async (session: string | undefined = '') => {
     }
 }
 
-export const createSession = async (email: string) => {
+export const createSession = async (email: string, password: string) => {
     const expires = new Date(Date.now() + cookie.duration)
-    const session = await encrypt({ email, expires })
+    const session = await encrypt({ email, password, expires })
 
     cookies().set(cookie.name, session, { ...cookie.options, expires })
     redirect('/dashboard')
@@ -45,7 +45,7 @@ export const verifySession = async () => {
         redirect('/login')
     }
 
-    return { email: session.email }
+    return { email: session.email, password: session.password }
 }
 export const deleteSession = async () => {
     cookies().delete(cookie.name)

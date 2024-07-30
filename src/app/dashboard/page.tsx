@@ -1,18 +1,20 @@
-import { getUserEmail } from '@/utils/user'
+import { getUser } from '@/utils/user'
 import React from 'react'
 import Admin from './Admin'
 import { LogoutForm } from './logoutForm'
+import Wrapper from '@/components/Wrapper'
 
 const Dashboard = async () => {
-    const user = await getUserEmail()
+    const user = await getUser()
     const email = user?.email
-
+    const password = user?.password
+    // const session = user?.session
 
     return (
-        <>
-            <Admin email={email} />
+        <Wrapper>
+            <Admin />
             <LogoutForm />
-        </>
+        </Wrapper>
     )
 }
 

@@ -9,7 +9,7 @@ export const handleLogin = async (data: any) => {
 
     const hashedPassword = await bcrypt.hash(inputPassword, 10)
 
-    await createSession(inputEmail)
+    await createSession(inputEmail, hashedPassword)
 }
 
 export const handleLogout = async () => {

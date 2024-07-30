@@ -11,5 +11,6 @@ export type FormState =
 
 export type SessionPayload = {
     email: string;
+    password: string;
     expires: Date;
 };
